@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^location/ location.php
+RewriteRule ^locations locations.php
