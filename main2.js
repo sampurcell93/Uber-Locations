@@ -337,6 +337,9 @@ $(document).ready(function() {
 			var oldName = this.model.get("name"), oldAddress = this.model.get("address");
 			var flag = false;
 
+			if (oldAddress == newAddress && this.model.get("name") == newName)
+				return;
+
 			if (newName == "" || newAddress == "")
 				this.error();
 			else { 
@@ -368,6 +371,8 @@ $(document).ready(function() {
 			var marker = mapObject.placeMarker(new google.maps.LatLng(updated.latitude, updated.longitude), newName);
 			this.model.marker.setMap(null);
 			this.model.marker = marker;
+			mapObject.map.setCenter(marker);
+			mapObject.map.setZoom(13);
 
 		},
 		/* If they enter an invalid address or blank line, throw error */
